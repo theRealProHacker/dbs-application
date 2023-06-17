@@ -1,0 +1,41 @@
+select:hover{
+    cursor: pointer;
+}
+
+.dropdown button{
+    min-height:30px;
+}
+
+#selected-players{
+    font-size:16px;
+    margin: 10px 0
+}
+#selected-players .badge{
+    padding-top:10px;
+}
+.badge .btn-close{
+    bottom: 0.2em; 
+    position: relative;
+    left: 0.3em;
+}
+
+#container{
+    padding:50px;
+}
+#player-search{
+    width:80%;
+}
+#attr-select{
+    text-transform: capitalize;
+    position:relative;
+    width:80%;
+    margin-bottom:10px;
+}
+/* --------------------- Autocomplete suggestions style here ---------------- */
+.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { 
+    padding: 5px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; cursor: pointer;
+}
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
+/* -------------------endof Autocomplete suggestions style here ---------------- */
