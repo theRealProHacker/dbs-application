@@ -37,5 +37,8 @@ def presidents():
     chart = bars + labels
     return flask.render_template("chart.jinja", chart = chart.to_json())
 
+@app.route("/map")
+def map():
+    return flask.render_template("chart.jinja", chart = "")
 
 app.run()
