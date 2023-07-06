@@ -47,14 +47,14 @@ def map():
     chart = alt.Chart(geo).mark_geoshape(
         stroke = "white"
     ).encode(
-        color=alt.Color("accidents:Q", scale=alt.Scale(scheme="blues")),
-        tooltip=['properties.Gemeinde_name:N']
+        color=alt.Color("Unfälle:Q", scale=alt.Scale(scheme="lightgreyred")),
+        tooltip=['Bezirk:N', 'Unfälle:Q']
     ).transform_lookup(
-        lookup='Gemeinde_schluessel',
+        lookup='id',
         from_=alt.LookupData(accidents, 'id', list(accidents.columns))
     ).properties(
         width=500,
-        height=300
+        height=400
     ).project(
         type='identity', reflectY=True
     )
