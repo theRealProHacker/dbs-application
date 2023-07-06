@@ -1,6 +1,7 @@
 import flask
 import pandas as pd
 import altair as alt
+import db
 
 app = flask.Flask(__name__)
 
@@ -38,18 +39,25 @@ def presidents():
 
     labels = bars.mark_text(align="right", dx=-5).encode(text="name")
     chart = bars + labels
-    return flask.render_template("chart.jinja", chart = chart.to_json())
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="US-Präsidenten seit 1945")
 
 @app.route("/map")
 def map():
+    accidents = db.accidents_by_district()
     chart = alt.Chart(geo).mark_geoshape(
         stroke = "white"
     ).encode(
-        color=alt.Color("properties.Gemeinde_name:N", scale=alt.Scale(scheme="blues")),
+        color=alt.Color("accidents:Q", scale=alt.Scale(scheme="blues")),
         tooltip=['properties.Gemeinde_name:N']
+    ).transform_lookup(
+        lookup='Gemeinde_schluessel',
+        from_=alt.LookupData(accidents, 'id', list(accidents.columns))
+    ).properties(
+        width=500,
+        height=300
     ).project(
         type='identity', reflectY=True
     )
-    return flask.render_template("chart.jinja", chart = chart.to_json())
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Unfälle nach Bezirk")
 
 app.run(debug=True)
