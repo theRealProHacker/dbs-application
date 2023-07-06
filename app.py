@@ -4,6 +4,9 @@ import altair as alt
 
 app = flask.Flask(__name__)
 
+diebstähle = pd.read_csv("data/Fahrraddiebstahl.csv", encoding="ansi")
+plr = pd.read_csv("data/lor_planungsraeume_2021.csv", encoding="ansi")
+geo = alt.Data(url = "static/bezirksgrenzen.geojson", format=alt.DataFormat(property='features',type='json'))
 
 @app.route("/")
 def index():
@@ -39,6 +42,14 @@ def presidents():
 
 @app.route("/map")
 def map():
-    return flask.render_template("chart.jinja", chart = "")
+    chart = alt.Chart(geo).mark_geoshape(
+        stroke = "white"
+    ).encode(
+        color=alt.Color("properties.Gemeinde_name:N", scale=alt.Scale(scheme="blues")),
+        tooltip=['properties.Gemeinde_name:N']
+    ).project(
+        type='identity', reflectY=True
+    )
+    return flask.render_template("chart.jinja", chart = chart.to_json())
 
-app.run()
+app.run(debug=True)
