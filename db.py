@@ -28,6 +28,14 @@ def accidents_by_lor():
                         """, conn)
     return df
 
+@cache
+def all_accidents():
+    with engine.connect() as conn:
+        df = pd.read_sql("""
+                        SELECT * FROM fahrraddiebstahl;
+                        """, conn)
+    return df
+
 
 if __name__ == "__main__":
     print(accidents_by_district())

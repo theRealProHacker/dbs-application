@@ -76,4 +76,13 @@ def bar():
     )
     return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Bezirk")
 
+@app.route("/table")
+def table():
+    df = db.all_accidents()
+    table = df.to_html()
+    return flask.render_template(
+        "table.jinja",
+        table=table,
+    )
+
 app.run(debug=True)
