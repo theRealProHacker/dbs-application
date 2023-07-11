@@ -47,8 +47,8 @@ def map():
     chart = alt.Chart(geo).mark_geoshape(
         stroke = "white"
     ).encode(
-        color=alt.Color("Unfälle:Q", scale=alt.Scale(scheme="lightgreyred")),
-        tooltip=['Bezirk:N', 'Unfälle:Q']
+        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="lightgreyred")),
+        tooltip=['Bezirk:N', 'Diebstähle:Q']
     ).transform_lookup(
         lookup='id',
         from_=alt.LookupData(accidents, 'id', list(accidents.columns))
@@ -58,15 +58,15 @@ def map():
     ).project(
         type='identity', reflectY=True
     )
-    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Unfälle nach Bezirk")
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Bezirk")
 
 @app.route("/bar")
 def bar():
     accidents = db.accidents_by_district()
     chart = alt.Chart(geo).mark_bar().encode(
         x=alt.X("Bezirk:N"),
-        y=alt.Y("Unfälle:Q"),
-        tooltip=['Bezirk:N', 'Unfälle:Q']
+        y=alt.Y("Diebstähle:Q"),
+        tooltip=['Bezirk:N', 'Diebstähle:Q']
     ).transform_lookup(
         lookup='id',
         from_=alt.LookupData(accidents, 'id', list(accidents.columns))
@@ -74,6 +74,6 @@ def bar():
         width=500,
         height=400
     )
-    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Unfälle nach Bezirk")
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Bezirk")
 
 app.run(debug=True)
