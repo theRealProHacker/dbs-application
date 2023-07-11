@@ -60,4 +60,20 @@ def map():
     )
     return flask.render_template("chart.jinja", chart = chart.to_json(), title="Unfälle nach Bezirk")
 
+@app.route("/bar")
+def bar():
+    accidents = db.accidents_by_district()
+    chart = alt.Chart(geo).mark_bar().encode(
+        x=alt.X("Bezirk:N"),
+        y=alt.Y("Unfälle:Q"),
+        tooltip=['Bezirk:N', 'Unfälle:Q']
+    ).transform_lookup(
+        lookup='id',
+        from_=alt.LookupData(accidents, 'id', list(accidents.columns))
+    ).properties(
+        width=500,
+        height=400
+    )
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Unfälle nach Bezirk")
+
 app.run(debug=True)
