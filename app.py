@@ -77,7 +77,7 @@ def bar():
 @app.route("/table")
 def table():
     df = db.all_accidents()
-    table = df.to_html()
+    table = df.to_html(classes="display")
     return flask.render_template(
         "table.jinja",
         table=table,
