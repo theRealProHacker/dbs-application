@@ -3,7 +3,7 @@ from functools import cache
 import pandas as pd
 import sqlalchemy as sa
 
-engine = sa.create_engine('postgresql://postgres:12345@localhost:5432/biketheft_berlin')
+engine = sa.create_engine('postgresql://postgres:dbs23@localhost:5432/biketheft_berlin')
 
 @cache
 def accidents_by_district():
