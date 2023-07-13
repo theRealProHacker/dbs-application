@@ -5,8 +5,6 @@ import db
 
 app = flask.Flask(__name__)
 
-diebstähle = pd.read_csv("data/Fahrraddiebstahl.csv", encoding="ansi")
-plr = pd.read_csv("data/lor_planungsraeume_2021.csv", encoding="ansi")
 geo = alt.Data(url = "static/bezirksgrenzen.geojson", format=alt.DataFormat(property='features',type='json'))
 
 @app.route("/")
