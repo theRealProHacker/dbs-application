@@ -78,9 +78,11 @@ def bar():
 def table():
     df = db.all_accidents()
     table = df.to_html(classes="display")
-    return flask.render_template(
+    html= flask.render_template(
         "table.jinja",
         table=table,
     )
+#    print(html, file=open("test.html", "w"))
+    return html
 
 app.run(debug=True)
