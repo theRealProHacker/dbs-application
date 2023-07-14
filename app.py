@@ -6,7 +6,7 @@ import db
 app = flask.Flask(__name__)
 
 geo = alt.Data(url = "static/bezirksgrenzen.geojson", format=alt.DataFormat(property='features',type='json'))
-geoplr = alt.Data(url = "static/lor_planungsraeume.geojson", format=alt.DataFormat(property='features',type='json'))
+geoplr = alt.Data(url = "static/lor_planungsraeume_2021.geojson", format=alt.DataFormat(property='features',type='json'))
 
 @app.route("/")
 def index():
