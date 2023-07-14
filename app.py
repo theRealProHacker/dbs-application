@@ -6,6 +6,7 @@ import db
 app = flask.Flask(__name__)
 
 geo = alt.Data(url = "static/bezirksgrenzen.geojson", format=alt.DataFormat(property='features',type='json'))
+geoplr = alt.Data(url = "static/lor_planungsraeume.geojson", format=alt.DataFormat(property='features',type='json'))
 
 @app.route("/")
 def index():
@@ -55,8 +56,30 @@ def map():
         height=400
     ).project(
         type='identity', reflectY=True
-    )
+     )
     return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Bezirk")
+
+
+#Neu hinzugefügt
+@app.route("/maplor")
+def maplor():
+    accidents = db.accidents_by_lor()
+    chart = alt.Chart(geoplr).mark_geoshape(
+        stroke = "white"
+    ).encode(
+        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="lightgreyred")),
+        tooltip=['Planungsraum:N', 'Diebstähle:Q']
+    ).transform_lookup(
+        lookup='PLR_ID',
+        from_=alt.LookupData(accidents, 'PLR_ID', list(accidents.columns))
+    ).properties(
+        width=500,
+        height=400
+    ).project(
+        type='identity', reflectY=True
+    )
+    return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Planungsraum")
+
 
 @app.route("/bar")
 def bar():
