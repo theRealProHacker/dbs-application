@@ -46,7 +46,7 @@ def map():
     chart = alt.Chart(geo).mark_geoshape(
         stroke = "white"
     ).encode(
-        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="lightgreyred")),
+        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="tealblues")),
         tooltip=['Bezirk:N', 'Diebstähle:Q']
     ).transform_lookup(
         lookup='id',
@@ -67,7 +67,7 @@ def maplor():
     chart = alt.Chart(geoplr).mark_geoshape(
         stroke = "white"
     ).encode(
-        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="lightgreyred")),
+        color=alt.Color("Diebstähle:Q", scale=alt.Scale(scheme="tealblues")),
         tooltip=['Planungsraum:N', 'Diebstähle:Q']
     ).transform_lookup(
         lookup='PLR_ID',
