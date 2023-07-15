@@ -13,19 +13,23 @@ def accidents_by_district():
                         FROM bezirksgrenze bg
                         JOIN lor_planungsraueme lp ON bg.gemeinde_schluessel = lp.BEZ
                         JOIN fahrraddiebstahl fd ON lp.PLR_ID = fd.LOR
+                        WHERE fd.Versuch = '0'
                         GROUP BY bg.gemeinde_schluessel;""", conn)
     df.rename(columns={"diebstähle": "Diebstähle"}, inplace=True)
     return df
 
+#Neu hinzugefügt
 @cache
 def accidents_by_lor():
     with engine.connect() as conn:
         df = pd.read_sql("""
-                        SELECT LOR, COUNT(*) AS Unfälle
+                        SELECT LOR AS PLR_ID, COUNT(*) AS Diebstähle
                         FROM fahrraddiebstahl
                         WHERE Versuch = '0'
                         GROUP BY LOR;
                         """, conn)
+    df.rename(columns={"diebstähle": "Diebstähle"}, inplace=True)
+    df.rename(columns={"plr_id": "PLR_ID"}, inplace=True)
     return df
 
 @cache
@@ -40,4 +44,5 @@ def all_accidents():
 
 
 if __name__ == "__main__":
-    print(accidents_by_district())
+    print(accidents_by_lor())
+    #print(accidents_by_district())
