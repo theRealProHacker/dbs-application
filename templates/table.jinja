@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <style>
+            <link rel="stylesheet" href="static/style.css">
+            .error {
+                color: red;
+            }
+        </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Überblick Fahrraddiebstähle</title>
@@ -9,11 +16,13 @@
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    
-    <a href="{{ url_for('index') }}"><button>Home</button></a>
-    <a href="{{ url_for('map') }}"><button>Diebstahl Bezirke</button></a>
-    <a href="{{ url_for('maplor') }}"><button>Diebstahl Planungsräume</button></a>
-    <a href="{{ url_for('table') }}"><button>Tabelle</button></a>
+    <h1>Fahrradiebstahl in Berlin</h1>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Startseite</a></li>
+        <li><a href="{{ url_for('map') }}">Diebstahl Bezirke</li>
+        <li><a href="{{ url_for('maplor') }}">Diebstahl Planungsräume</li>
+        <li><a href="{{ url_for('table') }}">Tabelle</a></li>
+    </ul>
     
     {{table}}
 </body>
@@ -22,4 +31,6 @@
     let table = $('table')
     table.DataTable();
 </script>
+
+
 </html>

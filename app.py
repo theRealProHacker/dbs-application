@@ -18,7 +18,7 @@ def presidents():
     presidents = pd.read_csv(
         "http://infovis.fh-potsdam.de/temp/us_presidents.csv",
         parse_dates=["start", "end"],
-    )
+    )   
     bars = (
         alt.Chart(presidents)
         .mark_bar(height=5)
@@ -105,7 +105,6 @@ def table():
         "table.jinja",
         table=table,
     )
-#    print(html, file=open("test.html", "w"))
     return html
 
 app.run(debug=True)

@@ -31,6 +31,53 @@ select:hover{
     width:80%;
     margin-bottom:10px;
 }
+
+h1{
+    text-align:left;
+    margin-top: 10px;
+    margin-bottom:10px;
+    font: w3-monospace;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+li {
+    float: left;
+  }
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+  
+li {
+    border-right: 1px solid #bbb;
+  }
+  
+li:last-child {
+    border-right: none;
+  }
+
+
 /* --------------------- Autocomplete suggestions style here ---------------- */
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { 
