@@ -1,1 +1,13 @@
-Dies ist die Beispiel-Indexseite
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landingpage</title>
+</head>
+<body>
+  <h1>Willkommen auf der Landingpage!</h1>
+
+  <a href="{{ url_for('map') }}"><button>Diebstahl Bezirke</button></a>
+  <a href="{{ url_for('maplor') }}"><button>Diebstahl Planungsräume</button></a>
+  <a href="{{ url_for('table') }}"><button>Tabelle</button></a>
+</body>
+</html>

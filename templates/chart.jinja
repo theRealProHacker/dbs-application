@@ -17,6 +17,13 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
     </head>
     <body>
+    
+    
+    <a href="{{ url_for('index') }}"><button>Home</button></a>
+    <a href="{{ url_for('map') }}"><button>Diebstahl Bezirke</button></a>
+    <a href="{{ url_for('maplor') }}"><button>Diebstahl Planungsräume</button></a>
+    <a href="{{ url_for('table') }}"><button>Tabelle</button></a>
+
         <div id="container" class="container">
             <div id="alt-chart"></div>
         </div>

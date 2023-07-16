@@ -43,6 +43,6 @@ def all_accidents():
     return df
 
 
-if __name__ == "__main__":
-    print(accidents_by_lor())
+#if __name__ == "__main__":
+    #print(accidents_by_lor())
     #print(accidents_by_district())
