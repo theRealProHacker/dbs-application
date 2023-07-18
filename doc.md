@@ -30,16 +30,13 @@ Um die Verbindung mit der Datenbank vorzubereiten haben wir folgenden Code gesch
 
 Anschließend haben wir die einzelnen Funktionen für die Datenabfrage geschrieben. Hier eine Beispiel Funktion, welche alle Fahrraddiebstähle in ein Dataframe speichert.
 
-    def accidents_by_district():
+    def all_accidents():
     with engine.connect() as conn:
         df = pd.read_sql("""
-                        SELECT bg.gemeinde_schluessel AS id, COUNT(fd.LOR) AS Diebstähle
-                        FROM bezirksgrenze bg
-                        JOIN lor_planungsraueme lp ON bg.gemeinde_schluessel = lp.BEZ
-                        JOIN fahrraddiebstahl fd ON lp.PLR_ID = fd.LOR
-                        WHERE fd.Versuch = '0'
-                        GROUP BY bg.gemeinde_schluessel;""", conn)
-    df.rename(columns={"diebstähle": "Diebstähle"}, inplace=True)
+                        SELECT F.tatzeit_anfang_datum AS Datum, B.gemeinde_namen AS Bezirk, L.plr_name AS Planungsraum, F.schadeshoehe AS Schaden, F.art_des_fahrrads AS Fahrradtyp
+                        FROM fahrraddiebstahl F, lor_planungsraueme L, bezirksgrenze B
+                        WHERE F.lor = L.plr_id AND L.bez = B.gemeinde_schluessel
+                        """, conn)
     return df
 
 Die zuvor vorbereitete “engine” baut hier eine konkrete Verbindung zu dem PostgreSQL Server auf. Und mit der Funktion pd.read_sql (welche von Pandas bereitgestellt wird) senden wir eine SQL Query an den PostgreSQL Server und Speichern das Ergebnis in das Dataframe “df”.
