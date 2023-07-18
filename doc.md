@@ -2,7 +2,7 @@
 
 ## Schritt 1: CSV Dateien sichten und Projektidee erarbeiten
 Um die Datenvisualisierung zu realisieren, haben wir uns zunächst die gegebenen CSV-Dateien genauer angesehen. Basierend darauf haben wir folgende Projektidee entwickelt:
-Wir wollen eine Webanwendung entwickeln, die eine Darstellung der Fahrraddiebstähle in Berlin ermöglicht. Die Daten sollen in einer Karte visuell dargestellt werden. Am besten sollte man die Diebstähle nach Bezirk und Planungsraum aufschlüsseln können. Zusätzlich wollen wir die Daten in einer Tabelle darstellen und ermöglichen diese zu durchsuchen und zu sortieren. 
+Wir wollen eine Webanwendung entwickeln, die eine Darstellung der Fahrraddiebstähle in Berlin ermöglicht. Die Daten sollen in einer Karte visuell dargestellt werden. Am besten sollte man die Diebstähle nach Bezirk und Planungsraum aufschlüsseln können. Zusätzlich wollen wir die Daten in einer Tabelle und einem Balkendiagramm darstellen und ermöglichen diese zu durchsuchen und zu sortieren. 
 
 ## Schritt 2: Datenbereinigung
 Da die verschiedenen CSV-Dateien einige für unser Projekt überflüssige Informationen enthalten, müssen wir sie vorher bereinigen. Dazu haben wir die CSV Dateien in Microsoft Excel importiert und dort die Spalten ohne nützlichen Inhalt entfernt. 
