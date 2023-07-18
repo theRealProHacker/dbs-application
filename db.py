@@ -36,7 +36,9 @@ def accidents_by_lor():
 def all_accidents():
     with engine.connect() as conn:
         df = pd.read_sql("""
-                        SELECT F.tatzeit_anfang_datum AS Datum, B.gemeinde_namen AS Bezirk, L.plr_name AS Planungsraum, F.schadeshoehe AS Schaden, F.art_des_fahrrads AS Fahrradtyp
+                        SELECT F.tatzeit_anfang_datum AS Datum, B.gemeinde_namen AS Bezirk,
+                        L.plr_name AS Planungsraum, F.schadeshoehe AS Schaden, F.art_des_fahrrads AS Fahrradtyp
+                        
                         FROM fahrraddiebstahl F, lor_planungsraueme L, bezirksgrenze B
                         WHERE F.lor = L.plr_id AND L.bez = B.gemeinde_schluessel
                         """, conn)
