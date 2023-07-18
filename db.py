@@ -41,6 +41,7 @@ def all_accidents():
                         
                         FROM fahrraddiebstahl F, lor_planungsraueme L, bezirksgrenze B
                         WHERE F.lor = L.plr_id AND L.bez = B.gemeinde_schluessel
+                        AND F.versuch = '0'
                         """, conn)
     return df
 
