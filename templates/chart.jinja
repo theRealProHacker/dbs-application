@@ -9,8 +9,9 @@
 {% block content %}
     <div id="alt-chart"></div>
 {% endblock %}
-
+{% block script %}
 <script>
     var spec = {{chart}};
 </script>
-<script src="./static/chart.js"></script>ß
+<script src="./static/chart.js"></script>
+{% endblock %}
