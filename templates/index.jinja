@@ -6,16 +6,24 @@
         <link rel="stylesheet" href="./static/style.css">
     
   </head>
-
     <body>
-    <h1>Fahrradiebstahl in Berlin</h1>
-    <ul>
-        <li><a href="{{ url_for('index') }}">Startseite</a></li>
-        <li><a href="{{ url_for('map') }}">Diebstahl Bezirke</li>
-        <li><a href="{{ url_for('maplor') }}">Diebstahl Planungsräume</li>
-        <li><a href="{{ url_for('table') }}">Tabelle</a></li>
-        <li><a href="https://github.com/theRealProHacker/dbs-application" target="_blank">GitHub Projekt</a></li>
-    </ul>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Fahrradiebstahl in Berlin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home</a>
+        <a class="nav-item nav-link" href="{{ url_for('map') }}">Map</a>
+        <a class="nav-item nav-link" href="{{ url_for('maplor') }}">Map LOR</a>
+        <a class="nav-item nav-link" href="{{ url_for('table') }}">Table</a>
+        <a class="nav-item nav-link" href="{{ url_for('bar') }}">Barchart</a>
+      </div>
+        </div>
+      </nav>
+    </header>
   </body>
 
   <footer>
