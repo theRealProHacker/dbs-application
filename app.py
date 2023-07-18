@@ -60,7 +60,6 @@ def map():
     return flask.render_template("chart.jinja", chart = chart.to_json(), title="Diebstähle nach Bezirk")
 
 
-#Neu hinzugefügt
 @app.route("/maplor")
 def maplor():
     accidents = db.accidents_by_lor()
@@ -101,7 +100,7 @@ def bar():
 def table():
     df = db.all_accidents()
     table = df.to_html(classes="display")
-    html= flask.render_template(
+    html = flask.render_template(
         "table.jinja",
         table=table,
     )
