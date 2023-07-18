@@ -28,6 +28,6 @@ py app.py
 1. Insalliere PostgreSQL
 2. Setze einen Server auf
 3. Erstelle neue Datenbank
-4. Importiere die 'biketheft_berlin.sql' Datenbank mit "Restore"
+4. Importiere die 'biketheft_berlin.sql' Datenbank (zu finden in Ordner Data) mit "Restore"
 5. Ändere falls notwendig den Username, Passwort, Port und Name der Datenbank in der db.py Datei:  
     engine = sa.create_engine('postgresql://USERNAME:PASSWORT@localhost:PORT/NAME_DER_DATENBANK')
